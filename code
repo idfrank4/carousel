@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Image Carousel</title>
+  <style>
+    .carousel-container {
+      position: relative;
+      width: 100%;
+      max-width: 600px;
+      margin: auto;
+      overflow: hidden;
+    }
+
+    .carousel-slide {
+      display: none;
+      width: 100%;
+    }
+
+    .carousel-slide img {
+      width: 100%;
+    }
+
+    .prev, .next {
+      cursor: pointer;
+      position: absolute;
+      top: 50%;
+      width: auto;
+      padding: 10px;
+      margin-top: -22px;
+      color: white;
+      font-weight: bold;
+      font-size: 18px;
+      transition: 0.6s ease;
+      border-radius: 50%;
+      user-select: none;
+      background-color: rgba(0, 0, 0, 0.5);
+    }
+
+    .prev {
+      left: 10px;
+    }
+
+    .next {
+      right: 10px;
+    }
+  </style>
+</head>
+<body>
+
+<div class="carousel-container">
+  <div class="carousel-slide">
+    <a href="https://toolbox.talentgenius.io/tools/julius" target="_blank">
+      <img src="https://i.imgur.com/PDA3Byr.png" alt="Image 1">
+    </a>
+  </div>
+  <div class="carousel-slide">
+    <a href="https://news.talentgenius.io/" target="_blank">
+      <img src="https://i.imgur.com/uGL6xP6.jpeg" alt="Image 2">
+    </a>
+  </div>
+
+  <a class="prev" onclick="changeSlide(-1)">&#10094;</a>
+  <a class="next" onclick="changeSlide(1)">&#10095;</a>
+</div>
+
+<script>
+  let currentIndex = 0;
+  showSlides(currentIndex);
+
+  function changeSlide(n) {
+    showSlides(currentIndex += n);
+  }
+
+  function showSlides(index) {
+    const slides = document.getElementsByClassName("carousel-slide");
+
+    if (index >= slides.length) {
+      currentIndex = 0;
+    }
+    if (index < 0) {
+      currentIndex = slides.length - 1;
+    }
+
+    for (let i = 0; i < slides.length; i++) {
+      slides[i].style.display = "none";
+    }
+
+    slides[currentIndex].style.display = "block";
+  }
+</script>
+
+</body>
+</html>
